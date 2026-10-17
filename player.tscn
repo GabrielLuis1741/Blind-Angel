@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bf55eh0dgnlvq" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cucc78egujnqf" path="res://character_body_2d.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://s2axdkr3ry47" path="res://gun.tscn" id="3_i3pqv"]
 
 [node name="Player" type="Node2D" unique_id=1470752503]
 
@@ -18,3 +19,6 @@ texture = ExtResource("1_4flbx")
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="Gun" parent="CharacterBody2D" unique_id=1110307846 instance=ExtResource("3_i3pqv")]
+position = Vector2(3, 3)
