@@ -1,10 +1,8 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
+const BEAM = preload("res://light_beam.tscn")
+@onready var tip: Marker2D = $Sprite2D/Marker2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,3 +12,8 @@ func _process(delta: float) -> void:
 		scale.y = -1
 	else:
 		scale.y = 1
+	if Input.is_action_just_pressed("fire"):
+		var bullet_instance = BEAM.instantiate()
+		get_tree().root.add_child(bullet_instance)
+		bullet_instance.global_position = tip.global_position
+		bullet_instance.rotation = rotation

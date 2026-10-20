@@ -1,3 +1,109 @@
 [gd_scene format=3 uid="uid://dxx5nuyygerfj"]
 
-[node name="Node2D" type="Node2D" unique_id=336769448]
+[ext_resource type="Script" uid="uid://mvrg62k3b25y" path="res://light_beam.gd" id="1_crlx4"]
+[ext_resource type="Texture2D" uid="uid://c4ntllbmyuyyd" path="res://FreeLaserPack/YellowTractorBeam.png" id="1_r5262"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crlx4"]
+atlas = ExtResource("1_r5262")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x503"]
+atlas = ExtResource("1_r5262")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hcnt"]
+atlas = ExtResource("1_r5262")
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhqjj"]
+atlas = ExtResource("1_r5262")
+region = Rect2(768, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o17k3"]
+atlas = ExtResource("1_r5262")
+region = Rect2(1024, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ufc"]
+atlas = ExtResource("1_r5262")
+region = Rect2(1280, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h86r"]
+atlas = ExtResource("1_r5262")
+region = Rect2(0, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip5c8"]
+atlas = ExtResource("1_r5262")
+region = Rect2(256, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjdgu"]
+atlas = ExtResource("1_r5262")
+region = Rect2(512, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjlfk"]
+atlas = ExtResource("1_r5262")
+region = Rect2(768, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klv4b"]
+atlas = ExtResource("1_r5262")
+region = Rect2(1024, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htdwt"]
+atlas = ExtResource("1_r5262")
+region = Rect2(1280, 128, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tejdo"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_crlx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x503")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hcnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhqjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o17k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ufc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h86r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip5c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjdgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjlfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klv4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htdwt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Light_beam" type="Node2D" unique_id=336769448]
+script = ExtResource("1_crlx4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=929482644]
+scale = Vector2(4, 0.4)
+sprite_frames = SubResource("SpriteFrames_tejdo")
+frame_progress = 0.15455286
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2037323403]
+rect = Rect2(-526, -264, 1050, 598)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

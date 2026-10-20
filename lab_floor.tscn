@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dbusvdovb7d3r"]
+
+[ext_resource type="Texture2D" uid="uid://bgefxiruf2rw2" path="res://Lab Asset Pack/1 Tiles/Tiles_01.png" id="1_pps5i"]
+
+[node name="Lab_floor" type="Node2D" unique_id=1162653770]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1244005053]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=459677866]
+texture = ExtResource("1_pps5i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D" unique_id=774769953]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
