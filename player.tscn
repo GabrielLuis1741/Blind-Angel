@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://lwgt7ylni4is"]
 
-[ext_resource type="Texture2D" uid="uid://bf55eh0dgnlvq" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cucc78egujnqf" path="res://character_body_2d.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://doyvdul3lsodi" path="res://template_player_sprites/player land.png" id="2_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://dyb1kp41poe14" path="res://template_player_sprites/player idle.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://tm11t6ifjrbd" path="res://template_player_sprites/player jump.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://csqypbhayaxee" path="res://template_player_sprites/player run.png" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://s2axdkr3ry47" path="res://gun.tscn" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://p6u4sl8knsmc" path="res://template_player_sprites/player wall land.png" id="5_dw050"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wuci"]
 atlas = ExtResource("2_1jxqw")
@@ -81,6 +81,42 @@ atlas = ExtResource("3_2hs0m")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_634y6"]
+atlas = ExtResource("5_dw050")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efrwb"]
+atlas = ExtResource("5_dw050")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiqhm"]
+atlas = ExtResource("5_dw050")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkwlq"]
+atlas = ExtResource("5_dw050")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl5qd"]
+atlas = ExtResource("5_dw050")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek41f"]
+atlas = ExtResource("5_dw050")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khis8"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b88wv"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgbbb"]
 atlas = ExtResource("3_2hs0m")
 region = Rect2(240, 0, 48, 48)
 
@@ -191,6 +227,38 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_634y6")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_efrwb")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_hiqhm")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_tkwlq")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_hl5qd")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_ek41f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khis8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b88wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgbbb")
+}],
+"loop": 0,
+"name": &"temp_ledge_climb",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bwjto")
 }, {
@@ -220,6 +288,9 @@ animations = [{
 "speed": 11.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdu1u"]
+height = 34.0
+
 [node name="Player" type="Node2D" unique_id=1470752503]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=666280737]
@@ -228,15 +299,10 @@ script = ExtResource("1_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=484632594]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_pxvb0")
-animation = &"temp_float"
+animation = &"temp_ledge_climb"
 autoplay = "temp_idle"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D" unique_id=2108873488]
-polygon = PackedVector2Array(2, -14, -4, -10, -7, -2, -11, 6, -12, 9, -11, 16, -7, 16, 0, 7, 7, 16, 7, -3)
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1258097813]
-visible = false
-texture = ExtResource("1_4flbx")
+frame = 8
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1929258167]
 process_callback = 0
@@ -256,3 +322,18 @@ one_shot = true
 process_callback = 0
 wait_time = 0.1
 one_shot = true
+
+[node name="LedgeClimbRayCast" type="RayCast2D" parent="CharacterBody2D" unique_id=1040472938]
+unique_name_in_owner = true
+position = Vector2(-3, -14)
+target_position = Vector2(22, 20)
+
+[node name="LedgeSpaceRayCast" type="RayCast2D" parent="CharacterBody2D" unique_id=226079924]
+unique_name_in_owner = true
+position = Vector2(-24, 15)
+target_position = Vector2(0, -39)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=731511305]
+unique_name_in_owner = true
+position = Vector2(-4, 3)
+shape = SubResource("CapsuleShape2D_sdu1u")

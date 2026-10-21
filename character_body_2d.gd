@@ -22,16 +22,20 @@ const FLOAT_VELOCITY := 100.0
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var coyote_timer: Timer = %CoyoteTimer
 @onready var float_cooldown: Timer = $FloatCooldown
+@onready var player_collision: CollisionShape2D = %PlayerCollision
+@onready var ledge_climb_ray_cast: RayCast2D = %LedgeClimbRayCast
+@onready var ledge_space_ray_cast: RayCast2D = %LedgeSpaceRayCast
 
 
 
 
 var active_state := STATE.FALL
-var can_double_jump = false
-
+var can_double_jump: = false
+var facing_direction: = 1.0
 
 func _ready() -> void:
 	switch_state(active_state)
+	ledge_climb_ray_cast.add_exception(self)
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
@@ -69,7 +73,11 @@ func switch_state(to_state: STATE) -> void:
 				return
 				animated_sprite_2d.play("temp_idle")
 				velocity.y = 0
-			
+		STATE.LEDGE_CLIMB:
+			animated_sprite_2d.play("temp_ledge_climb")
+			velocity = Vector2.ZERO
+			global_position.y = ledge_climb_ray_cast.get_collision_point().y
+			can_double_jump = true
 
 
 
@@ -88,7 +96,8 @@ func process_state(delta: float)	-> void:
 					switch_state(STATE.DOUBLE_JUMP)
 				else:
 					switch_state(STATE.FLOAT)
-					
+			elif is_input_toward_facing() and is_ledge() and is_space():
+				switch_state(STATE.LEDGE_CLIMB)
 		STATE.FLOOR:	
 			if Input.get_axis("move_left", "move_right"):
 				animated_sprite_2d.play("temp_run")
@@ -119,13 +128,50 @@ func process_state(delta: float)	-> void:
 			elif Input.is_action_just_released("jump"):
 				float_cooldown.start()
 				switch_state(STATE.FALL)
+			elif is_input_toward_facing() and is_ledge() and is_space():
+				switch_state(STATE.LEDGE_CLIMB)
+				
+		STATE.LEDGE_CLIMB:
+			if not animated_sprite_2d.is_playing():
+				animated_sprite_2d.play("temp_idle")
+				var offset : = ledge_climb_offset()
+				offset.x *= facing_direction
+				position *= offset
+				switch_state(STATE.FLOOR)
 
 
 func handle_movement() -> void:
 	var input_direction := signf(Input.get_axis("move_left", "move_right"))
 	if input_direction:
 		animated_sprite_2d.flip_h = input_direction < 0
+		facing_direction = input_direction
+		ledge_climb_ray_cast.position.x = input_direction * absf(ledge_climb_ray_cast.position.x)
+		ledge_climb_ray_cast.target_position.x = input_direction * absf(ledge_climb_ray_cast.position.x)
+		ledge_climb_ray_cast.force_raycast_update()
 	velocity.x = input_direction * WALK_VELOCITY	
 	
+
+func is_input_toward_facing() -> bool:
+	return signf(Input.get_axis("move_left", "move_right")) == facing_direction
+
+
+
+func is_ledge() -> bool:
+	return is_on_wall_only() and \
+	ledge_climb_ray_cast.is_colliding() and \
+	ledge_climb_ray_cast.get_collision_normal().is_equal_approx(Vector2.UP)
 	
-	
+
+func is_space() -> bool:
+	ledge_space_ray_cast.global_position = ledge_climb_ray_cast.get_collision_point()
+	ledge_space_ray_cast.force_raycast_update()
+	return not ledge_space_ray_cast.is_colliding()
+
+
+func ledge_climb_offset() -> Vector2:
+	var shape : = player_collision.shape
+	if shape is CapsuleShape2D:
+		return Vector2(shape.radius * 2.0, -shape.height * 0.5)
+	if shape is RectangleShape2D:
+		return Vector2(shape.size.x, -shape.size.y * 0.5)
+	return Vector2.ZERO
