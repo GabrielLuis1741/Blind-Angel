@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://lwgt7ylni4is" path="res://player.tscn" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://bfv2dgrwl4xth" path="res://LabFloorTiles.tscn" id="2_hbghi"]
-[ext_resource type="Texture2D" uid="uid://bf55eh0dgnlvq" path="res://icon.svg" id="2_hbghi"]
-[ext_resource type="AudioStream" uid="uid://cbjeubm26d50w" path="res://Tense Boggie - 125 bpm.wav" id="3_hn12h"]
 
 [node name="Level_1" type="Node2D" unique_id=157300636]
 
@@ -12,8 +10,3 @@ position = Vector2(-322, -205)
 
 [node name="Node2D" parent="." unique_id=1552062403 instance=ExtResource("2_hbghi")]
 position = Vector2(-540, -99)
-position = Vector2(-8, -306)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=547316049]
-stream = ExtResource("3_hn12h")
-autoplay = true
