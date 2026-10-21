@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://0i8q48m76fu1"]
+
+[ext_resource type="PackedScene" uid="uid://bfv2dgrwl4xth" path="res://LabFloorTiles.tscn" id="1_1c2mv"]
+[ext_resource type="PackedScene" uid="uid://lwgt7ylni4is" path="res://player.tscn" id="2_f7g2b"]
+[ext_resource type="PackedScene" uid="uid://gru13bcgp3xi" path="res://enemies/enemy_1.tscn" id="3_f7g2b"]
+
+[node name="test_level" type="Node2D" unique_id=870854963]
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1865389706]
+format = 2
+
+[node name="Node2D" parent="." unique_id=1552062403 instance=ExtResource("1_1c2mv")]
+position = Vector2(-540, -99)
+
+[node name="Player" parent="." unique_id=1470752503 instance=ExtResource("2_f7g2b")]
+position = Vector2(-434, -116)
+
+[node name="Enemy1" parent="." unique_id=1392990850 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(-278, -100)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy1" unique_id=967716358]
+
+[node name="Point1" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=1412226689]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=384903580]
+position = Vector2(55, 0)

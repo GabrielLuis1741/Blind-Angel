@@ -25,4 +25,18 @@ patrol_points = NodePath("PatrolPoints")
 position = Vector2(-68, 0)
 
 [node name="Point2" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=384903580]
-position = Vector2(52, -3)
+position = Vector2(55, 0)
+
+[node name="Enemy2" parent="." unique_id=320917039 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(-69, -99)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy2" unique_id=54760318]
+
+[node name="Point1" type="Marker2D" parent="Enemy2/PatrolPoints" unique_id=197709237]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy2/PatrolPoints" unique_id=1906566179]
+position = Vector2(55, 0)

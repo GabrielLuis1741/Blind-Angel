@@ -125,14 +125,22 @@ animations = [{
 script = ExtResource("1_df7aa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502102602]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_pxvb0")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.95768386
+animation = &"walk"
+autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=697015419]
+visible = false
 position = Vector2(0, -6.999999)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_pxvb0")
 debug_color = Color(0.8862745, 0.6, 0.69803923, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=1927951884]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
