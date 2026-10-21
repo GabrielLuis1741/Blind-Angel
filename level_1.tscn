@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lwgt7ylni4is" path="res://player.tscn" id="1_3hls8"]
 [ext_resource type="Texture2D" uid="uid://bf55eh0dgnlvq" path="res://icon.svg" id="2_hbghi"]
+[ext_resource type="AudioStream" uid="uid://cbjeubm26d50w" path="res://Tense Boggie - 125 bpm.wav" id="3_hn12h"]
 
 [node name="Level_1" type="Node2D" unique_id=157300636]
 
@@ -20,3 +21,7 @@ polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64
 
 [node name="Player" parent="." unique_id=1470752503 instance=ExtResource("1_3hls8")]
 position = Vector2(-8, -306)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=547316049]
+stream = ExtResource("3_hn12h")
+autoplay = true
