@@ -67,8 +67,8 @@ func enemy_walk(delta: float):
 	else:
 		direction = Vector2.LEFT
 		
-	# can_walk = true
-	# timer.start()
+	can_walk = true
+	timer.start()
 	
 	animated_sprite_2d.flip_h = direction.x < 0
 
