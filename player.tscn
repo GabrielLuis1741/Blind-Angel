@@ -7,6 +7,39 @@
 [ext_resource type="Texture2D" uid="uid://csqypbhayaxee" path="res://template_player_sprites/player run.png" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://s2axdkr3ry47" path="res://gun.tscn" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://p6u4sl8knsmc" path="res://template_player_sprites/player wall land.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://0ilktkd5rhxy" path="res://template_player_sprites/player wall slide right.png" id="7_dw050"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iwfv"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwsg1"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xqrm"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfour"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gr2b"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl8ci"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieltc"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fddr8"]
+atlas = ExtResource("3_hqtel")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wuci"]
 atlas = ExtResource("2_1jxqw")
@@ -152,8 +185,49 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("3_hqtel")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_331ug"]
+atlas = ExtResource("7_dw050")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny14h"]
+atlas = ExtResource("7_dw050")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibah8"]
+atlas = ExtResource("7_dw050")
+region = Rect2(96, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pxvb0"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iwfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwsg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xqrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfour")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gr2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl8ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fddr8")
+}],
+"loop": 0,
+"name": &"temp_dash",
+"speed": 3.5
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2wuci")
@@ -256,7 +330,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"temp_ledge_climb",
-"speed": 5.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -286,6 +360,20 @@ animations = [{
 "loop": 1,
 "name": &"temp_run",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_331ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny14h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibah8")
+}],
+"loop": 0,
+"name": &"temp_wall_slide",
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdu1u"]
@@ -299,10 +387,8 @@ script = ExtResource("1_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=484632594]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_pxvb0")
-animation = &"temp_ledge_climb"
+animation = &"temp_dash"
 autoplay = "temp_idle"
-frame = 8
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1929258167]
 process_callback = 0
@@ -315,7 +401,7 @@ position = Vector2(11, -2)
 [node name="CoyoteTimer" type="Timer" parent="CharacterBody2D" unique_id=1564423976]
 unique_name_in_owner = true
 process_callback = 0
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="FloatCooldown" type="Timer" parent="CharacterBody2D" unique_id=753224563]
@@ -325,15 +411,26 @@ one_shot = true
 
 [node name="LedgeClimbRayCast" type="RayCast2D" parent="CharacterBody2D" unique_id=1040472938]
 unique_name_in_owner = true
-position = Vector2(-3, -14)
-target_position = Vector2(22, 20)
+position = Vector2(-2, -15)
+target_position = Vector2(18, 19)
 
 [node name="LedgeSpaceRayCast" type="RayCast2D" parent="CharacterBody2D" unique_id=226079924]
 unique_name_in_owner = true
-position = Vector2(-24, 15)
-target_position = Vector2(0, -39)
+position = Vector2(-26, 12)
+target_position = Vector2(0, -26)
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=731511305]
 unique_name_in_owner = true
 position = Vector2(-4, 3)
 shape = SubResource("CapsuleShape2D_sdu1u")
+
+[node name="WallSlideRayCast" type="RayCast2D" parent="CharacterBody2D" unique_id=861687659]
+unique_name_in_owner = true
+position = Vector2(-3, 2)
+target_position = Vector2(16, 0)
+
+[node name="DashCooldown" type="Timer" parent="CharacterBody2D" unique_id=114046973]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.1
+one_shot = true
