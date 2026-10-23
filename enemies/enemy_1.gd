@@ -5,7 +5,9 @@ var enemy_death_effect = preload("res://enemy_death_effect.tscn")
 @export var patrol_points : Node
 @export var speed : int = 1500
 @export var wait_time : int = 3
-@export var health : int = 3
+@export var health_amount : int = 3
+@export var damage_amount : int = 1
+
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var timer: Timer = %Timer
 
@@ -20,7 +22,6 @@ var point_positions : Array[Vector2]
 var current_point : Vector2
 var current_point_position : int = 0
 var can_walk : bool
-var health_amount : int = 3
 
 func _ready():
 	if patrol_points != null:

@@ -379,7 +379,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdu1u"]
 height = 34.0
 
-[node name="Player" type="Node2D" unique_id=1470752503]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxvb0"]
+
+[node name="Player" type="Node2D" unique_id=1470752503 groups=["Player"]]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=666280737]
 script = ExtResource("1_onrkg")
@@ -434,3 +436,14 @@ unique_name_in_owner = true
 process_callback = 0
 wait_time = 0.1
 one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="CharacterBody2D" unique_id=1993456595]
+collision_layer = 2
+collision_mask = 4
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox" unique_id=524780846]
+position = Vector2(-4, 3)
+shape = SubResource("CapsuleShape2D_pxvb0")
+debug_color = Color(0.7902709, 0.18792331, 0.93552405, 0.41960785)
+
+[connection signal="body_entered" from="CharacterBody2D/Hurtbox" to="CharacterBody2D" method="_on_hurtbox_body_entered"]

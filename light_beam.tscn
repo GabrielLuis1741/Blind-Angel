@@ -95,7 +95,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3qvmb"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlllf"]
+radius = 7.0
+height = 224.16034
 
 [node name="Light_beam" type="Node2D" unique_id=336769448]
 script = ExtResource("1_crlx4")
@@ -113,7 +115,10 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1055423458]
-shape = SubResource("CircleShape2D_3qvmb")
+position = Vector2(-111, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rlllf")
+debug_color = Color(0.3254902, 0.9607843, 0.2509804, 0.41960785)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

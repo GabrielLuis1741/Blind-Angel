@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ygpdtpq0hq2c"]
+
+[ext_resource type="AudioStream" uid="uid://di2tfd2lfwvs6" path="res://music/Rain flows - 140 bpm.wav" id="11_3xhsb"]
+
+[node name="test_level" type="Node2D" unique_id=870854963]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
+stream = ExtResource("11_3xhsb")
+autoplay = true
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=809463620]
+offset_left = 507.0
+offset_top = 300.0
+offset_right = 612.0
+offset_bottom = 337.0
+text = "game over :["
+metadata/_edit_group_ = true

@@ -9,97 +9,125 @@
 [ext_resource type="Texture2D" uid="uid://6l1lxsqv0lnr" path="res://Lab Asset Pack/2 Background/Night/4.png" id="4_6emce"]
 [ext_resource type="Texture2D" uid="uid://cv01gfbilsv66" path="res://Lab Asset Pack/2 Background/Night/5.png" id="5_lowby"]
 [ext_resource type="Texture2D" uid="uid://ta3f0f5hi5dj" path="res://Lab Asset Pack/2 Background/Night/6.png" id="6_58smv"]
+[ext_resource type="AudioStream" uid="uid://di2tfd2lfwvs6" path="res://music/Rain flows - 140 bpm.wav" id="10_lowby"]
+[ext_resource type="PackedScene" uid="uid://yavd4idmtdnn" path="res://enemies/shooterEnemy.tscn" id="11_58smv"]
+[ext_resource type="PackedScene" uid="uid://fguhcigk8tpl" path="res://game_screen.tscn" id="12_a25ih"]
 
 [node name="test_level" type="Node2D" unique_id=870854963]
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1666072550]
+[node name="Background" type="Node2D" parent="." unique_id=1260111025]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1666072550]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.67, 0.67)
 repeat_size = Vector2(1144, 0)
 repeat_times = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1938089538]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=1938089538]
 position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("1_4ptq8")
 
-[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=865738556]
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=865738556]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1144, 0)
 repeat_times = 10
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=872527181]
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D2" unique_id=872527181]
 position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("2_sb12i")
 
-[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=2122106386]
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=2122106386]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.75, 0.75)
 repeat_size = Vector2(1144, 0)
 repeat_times = 10
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3" unique_id=1676207]
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D3" unique_id=1676207]
 position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("3_gbhdq")
 
-[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=1398510725]
+[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=1398510725]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(1144, 0)
 repeat_times = 10
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D4" unique_id=2079348796]
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D4" unique_id=2079348796]
 position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("4_6emce")
 
-[node name="Parallax2D5" type="Parallax2D" parent="." unique_id=389644011]
+[node name="Parallax2D5" type="Parallax2D" parent="Background" unique_id=389644011]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.85, 0.85)
 repeat_size = Vector2(1144, 0)
 repeat_times = 9
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D5" unique_id=614152520]
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D5" unique_id=614152520]
 position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("5_lowby")
 
-[node name="Parallax2D6" type="Parallax2D" parent="." unique_id=1780764699]
+[node name="Parallax2D6" type="Parallax2D" parent="Background" unique_id=1780764699]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.9, 0.9)
 repeat_size = Vector2(1144, 0)
 repeat_times = 10
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D6" unique_id=678041026]
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D6" unique_id=678041026]
 position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("6_58smv")
 
-[node name="Node2D" parent="." unique_id=1552062403 instance=ExtResource("1_1c2mv")]
+[node name="Platforms" parent="." unique_id=1552062403 instance=ExtResource("1_1c2mv")]
 position = Vector2(-540, -99)
 
 [node name="Player" parent="." unique_id=1470752503 instance=ExtResource("2_f7g2b")]
 position = Vector2(-434, -116)
 
-[node name="Enemy1" parent="." unique_id=1392990850 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+[node name="Enemies" type="Node2D" parent="." unique_id=89402935]
+
+[node name="Enemy1" parent="Enemies" unique_id=1392990850 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(-278, -100)
 patrol_points = NodePath("PatrolPoints")
 
-[node name="PatrolPoints" type="Node2D" parent="Enemy1" unique_id=967716358]
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy1" unique_id=967716358]
 
-[node name="Point1" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=1412226689]
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy1/PatrolPoints" unique_id=1412226689]
 position = Vector2(-68, 0)
 
-[node name="Point2" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=384903580]
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy1/PatrolPoints" unique_id=384903580]
 position = Vector2(55, 0)
 
-[node name="Enemy2" parent="." unique_id=320917039 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+[node name="Enemy2" parent="Enemies" unique_id=320917039 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(-69, -99)
 patrol_points = NodePath("PatrolPoints")
 speed = 3000
 wait_time = 1
 
-[node name="PatrolPoints" type="Node2D" parent="Enemy2" unique_id=54760318]
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy2" unique_id=54760318]
 
-[node name="Point1" type="Marker2D" parent="Enemy2/PatrolPoints" unique_id=197709237]
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy2/PatrolPoints" unique_id=197709237]
 position = Vector2(-68, 0)
 
-[node name="Point2" type="Marker2D" parent="Enemy2/PatrolPoints" unique_id=1906566179]
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy2/PatrolPoints" unique_id=1906566179]
 position = Vector2(55, 0)
+
+[node name="ShooterEnemy" parent="Enemies" unique_id=1139859570 instance=ExtResource("11_58smv")]
+position = Vector2(1584, -586)
+
+[node name="ShooterEnemy2" parent="Enemies" unique_id=1452046715 instance=ExtResource("11_58smv")]
+position = Vector2(2570, -793)
+
+[node name="ShooterEnemy3" parent="Enemies" unique_id=5090458 instance=ExtResource("11_58smv")]
+position = Vector2(294, -181)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
+stream = ExtResource("10_lowby")
+autoplay = true
+
+[node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]

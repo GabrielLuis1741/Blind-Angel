@@ -302,3 +302,9 @@ func ledge_climb_offset() -> Vector2:
 
 func can_wall_slide() -> bool:
 	return is_on_wall_only() and wall_slide_ray_cast.is_colliding()
+
+
+func _on_hurtbox_body_entered(body: Node2D):
+	if body.is_in_group("Enemy"):
+		print("Enemy entered ", body.damage_amount)
+		HealthManager.decrease_health(body.damage_amount)
