@@ -100,7 +100,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pxvb0"]
 
-[node name="ShooterEnemy" type="CharacterBody2D" unique_id=1139859570]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hc7jm"]
+radius = 16.298004
+
+[node name="ShooterEnemy" type="CharacterBody2D" unique_id=1139859570 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_f0a38")
 
@@ -116,3 +119,13 @@ frame_progress = 0.12661006
 position = Vector2(0, -24)
 scale = Vector2(2.2, 2.2)
 shape = SubResource("CircleShape2D_pxvb0")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1191341060]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1743385212]
+position = Vector2(0.99999994, -24)
+scale = Vector2(1.6, 1.6)
+shape = SubResource("CircleShape2D_hc7jm")
+debug_color = Color(0.9918756, 0.3516734, 0.6599248, 0.41960785)

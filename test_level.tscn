@@ -117,17 +117,31 @@ position = Vector2(-68, 0)
 [node name="Point2" type="Marker2D" parent="Enemies/Enemy2/PatrolPoints" unique_id=1906566179]
 position = Vector2(55, 0)
 
-[node name="ShooterEnemy" parent="Enemies" unique_id=1139859570 instance=ExtResource("11_58smv")]
-position = Vector2(1584, -586)
-
-[node name="ShooterEnemy2" parent="Enemies" unique_id=1452046715 instance=ExtResource("11_58smv")]
-position = Vector2(2570, -793)
-
-[node name="ShooterEnemy3" parent="Enemies" unique_id=5090458 instance=ExtResource("11_58smv")]
-position = Vector2(294, -181)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
 stream = ExtResource("10_lowby")
 autoplay = true
 
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
+
+[node name="ShooterEnemy" parent="." unique_id=1139859570 instance=ExtResource("11_58smv")]
+position = Vector2(199, -185)
+
+[node name="PatrolPoints" type="Node2D" parent="ShooterEnemy" unique_id=505874537]
+
+[node name="Point1" type="Marker2D" parent="ShooterEnemy/PatrolPoints" unique_id=1691201091]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="ShooterEnemy/PatrolPoints" unique_id=1731094881]
+position = Vector2(55, 0)
+
+[node name="ShooterEnemy2" parent="." unique_id=2123404432 instance=ExtResource("11_58smv")]
+position = Vector2(377, -78)
+
+[node name="PatrolPoints" type="Node2D" parent="ShooterEnemy2" unique_id=1850095290]
+position = Vector2(-31, 5)
+
+[node name="Point1" type="Marker2D" parent="ShooterEnemy2/PatrolPoints" unique_id=232369481]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="ShooterEnemy2/PatrolPoints" unique_id=729932257]
+position = Vector2(55, 0)
