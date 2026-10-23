@@ -95,6 +95,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qvmb"]
+
 [node name="Light_beam" type="Node2D" unique_id=336769448]
 script = ExtResource("1_crlx4")
 
@@ -106,4 +108,13 @@ frame_progress = 0.15455286
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2037323403]
 rect = Rect2(-526, -264, 1050, 598)
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=672341242]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1055423458]
+shape = SubResource("CircleShape2D_3qvmb")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

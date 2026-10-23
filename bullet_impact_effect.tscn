@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bncu0jte76vgq"]
+
+[ext_resource type="Texture2D" uid="uid://bkts3srstmpvb" path="res://impact.png" id="1_guou6"]
+[ext_resource type="Script" uid="uid://bo0q77os8kdd3" path="res://bullet_impact_effect.gd" id="2_skh4p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skh4p"]
+atlas = ExtResource("1_guou6")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60sm3"]
+atlas = ExtResource("1_guou6")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idpbn"]
+atlas = ExtResource("1_guou6")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lch1u"]
+atlas = ExtResource("1_guou6")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxvb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skh4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60sm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idpbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lch1u")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skh4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60sm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idpbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lch1u")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"impact",
+"speed": 12.0
+}]
+
+[node name="BulletImpactEffect" type="AnimatedSprite2D" unique_id=1825475889]
+sprite_frames = SubResource("SpriteFrames_pxvb0")
+animation = &"impact"
+autoplay = "impact"
+script = ExtResource("2_skh4p")
+
+[node name="Timer" type="Timer" parent="." unique_id=1413031711]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
