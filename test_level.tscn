@@ -83,6 +83,18 @@ position = Vector2(0, -275)
 scale = Vector2(1.9861112, 1.9876543)
 texture = ExtResource("6_58smv")
 
+[node name="Parallax2D7" type="Parallax2D" parent="Background" unique_id=1038727455]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.67, 0.67)
+repeat_size = Vector2(1144, 0)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D7" unique_id=1460114307]
+position = Vector2(3.9999995, 404.5)
+rotation = 3.1415927
+scale = Vector2(1.9861112, 1.9876543)
+texture = ExtResource("1_4ptq8")
+
 [node name="Platforms" parent="." unique_id=1552062403 instance=ExtResource("1_1c2mv")]
 position = Vector2(-540, -99)
 
@@ -235,11 +247,9 @@ position = Vector2(4322, -971)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
 stream = ExtResource("10_lowby")
-volume_db = -80.0
 autoplay = true
 
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
-visible = false
-color = Color(0, 0, 0, 1)
+color = Color(0.070447005, 0.049565203, 0.09550699, 1)

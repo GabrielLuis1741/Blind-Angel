@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ct3wm4ptcc352"]
+
+[sub_resource type="Animation" id="Animation_aud3v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ggkw"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vp514"]
+_data = {
+&"RESET": SubResource("Animation_aud3v"),
+&"fade_to_black": SubResource("Animation_5ggkw")
+}
+
+[node name="ColorRect" type="ColorRect" unique_id=1427511235]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1148.0
+offset_bottom = 644.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1325579016]
+libraries/ = SubResource("AnimationLibrary_vp514")

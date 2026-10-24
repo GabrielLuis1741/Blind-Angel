@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Blind Angel"
-run/main_scene="uid://dfj5unotm8xhr"
+run/main_scene="uid://cmvhndwnu6rar"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

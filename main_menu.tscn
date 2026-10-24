@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cmvhndwnu6rar"]
+
+[ext_resource type="Script" uid="uid://cnw2seltr4hrr" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="AudioStream" uid="uid://dnlavtoee260w" path="res://music/New city same city - 116 bpm.wav" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://dgkytqhwut0kd" path="res://main_menu_art.png" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://p5rb4nkvkc12" path="res://ui/logo1.png" id="4_0k4wn"]
+[ext_resource type="Texture2D" uid="uid://dpgigsl2p62" path="res://ui/start_normal.png" id="4_glbon"]
+[ext_resource type="Texture2D" uid="uid://cr88ppfewqe66" path="res://ui/logo2.png" id="5_j5v2v"]
+[ext_resource type="Texture2D" uid="uid://b0g7xshw647ei" path="res://ui/start_hover.png" id="5_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://d3qc1kso7ixev" path="res://ui/options_normal.png" id="6_qe12f"]
+[ext_resource type="Texture2D" uid="uid://b73qih63f8hld" path="res://ui/options_hover.png" id="7_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://0ti1g3r5uy3r" path="res://ui/quit_normal.png" id="8_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://b5osq8m72cvtg" path="res://ui/quit_hover.png" id="9_0o4t1"]
+[ext_resource type="PackedScene" uid="uid://ct3wm4ptcc352" path="res://fade_transition.tscn" id="12_j5v2v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jix8l"]
+atlas = ExtResource("3_fu7sn")
+region = Rect2(0, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glbon"]
+atlas = ExtResource("3_fu7sn")
+region = Rect2(576, 0, 576, 324)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jalwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jix8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glbon")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6liy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0k4wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j5v2v")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="MainMenu" type="Node2D" unique_id=883468437]
+script = ExtResource("1_06t4h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=380575135]
+stream = ExtResource("2_7vrkn")
+volume_db = -13.0
+autoplay = true
+
+[node name="MenuArt" type="AnimatedSprite2D" parent="." unique_id=607157953]
+position = Vector2(578, 325)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jalwk")
+autoplay = "default"
+frame_progress = 0.6801234
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1254639644]
+position = Vector2(827, 122.00001)
+scale = Vector2(2.8, 2.8)
+sprite_frames = SubResource("SpriteFrames_o6liy")
+autoplay = "default"
+
+[node name="ButtonManager" type="Control" parent="." unique_id=1090512714]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="TextureButton" parent="ButtonManager" unique_id=897581596]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 214.0
+offset_right = 961.0
+offset_bottom = 321.0
+texture_normal = ExtResource("4_glbon")
+texture_pressed = ExtResource("5_nlkkf")
+texture_hover = ExtResource("5_nlkkf")
+stretch_mode = 5
+
+[node name="Options" type="TextureButton" parent="ButtonManager" unique_id=1992980038]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 301.0
+offset_right = 960.0
+offset_bottom = 404.0
+texture_normal = ExtResource("6_qe12f")
+texture_pressed = ExtResource("7_8qtwp")
+texture_hover = ExtResource("7_8qtwp")
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="ButtonManager" unique_id=104296121]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 382.0
+offset_right = 954.0
+offset_bottom = 485.0
+texture_normal = ExtResource("8_dy7ct")
+texture_pressed = ExtResource("9_0o4t1")
+texture_hover = ExtResource("9_0o4t1")
+stretch_mode = 5
+
+[node name="FadeTransition" parent="." unique_id=1427511235 instance=ExtResource("12_j5v2v")]
+visible = false
+
+[node name="FadeTime" type="Timer" parent="FadeTransition" unique_id=1286960155]
+
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonManager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="FadeTransition/FadeTime" to="." method="_on_fade_time_timeout"]
