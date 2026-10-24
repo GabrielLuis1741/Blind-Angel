@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b3t2otwd21djo"]
+
+[ext_resource type="Script" uid="uid://c2h8acwgopmsm" path="res://shooter_enemy_bullet.gd" id="1_q266h"]
+[ext_resource type="Texture2D" uid="uid://08qw1xmva2uy" path="res://enemies/enemySprites/Projectile_zombie_shooter.png" id="2_2kmgx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8vrw"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(0, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lddo"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(17, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o15od"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(34, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juhtn"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(51, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4prpq"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(68, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx3qs"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(85, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l7qe"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(102, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll5m7"]
+atlas = ExtResource("2_2kmgx")
+region = Rect2(119, 0, 17, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jalwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8vrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lddo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o15od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juhtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4prpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx3qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l7qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll5m7")
+}],
+"loop": 1,
+"name": &"shoot",
+"speed": 7.0
+}]
+
+[node name="shooterEnemyBullet" type="Area2D" unique_id=600009463]
+script = ExtResource("1_q266h")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=913393061]
+sprite_frames = SubResource("SpriteFrames_jalwk")
+animation = &"shoot"
+frame_progress = 0.5439556
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=9861035]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
