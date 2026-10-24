@@ -1,9 +1,10 @@
 extends Node2D
 
+@onready var beam_timer: Timer = %BeamTimer
 var bullet_impact_effect = preload("res://bullet_impact_effect.tscn")
 var damage_amount : int = 1
 
-const SPEED: int = 700
+const SPEED: int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += transform.x * SPEED * delta
@@ -24,6 +25,8 @@ func get_damage_amount() -> int:
 	return damage_amount
 
 func bullet_impact():
+	beam_timer.start()
+	await beam_timer.timeout
 	var bullet_impact_effect_instance = bullet_impact_effect.instantiate() as Node2D
 	bullet_impact_effect_instance.global_position = global_position
 	get_parent().add_child(bullet_impact_effect_instance)

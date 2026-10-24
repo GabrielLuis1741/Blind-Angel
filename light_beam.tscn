@@ -92,12 +92,23 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlllf"]
 radius = 7.0
 height = 224.16034
+
+[sub_resource type="Gradient" id="Gradient_crlx4"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_crlx4"]
+gradient = SubResource("Gradient_crlx4")
+width = 63
+height = 58
+use_hdr = true
+fill = 1
+fill_from = Vector2(1, 0.5299145)
+fill_to = Vector2(0, 0.551282)
 
 [node name="Light_beam" type="Node2D" unique_id=336769448]
 script = ExtResource("1_crlx4")
@@ -119,6 +130,17 @@ position = Vector2(-111, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rlllf")
 debug_color = Color(0.3254902, 0.9607843, 0.2509804, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=453906141]
+position = Vector2(165.74997, 3)
+scale = Vector2(12.9761915, 7.8103447)
+range_z_max = 0
+texture = SubResource("GradientTexture2D_crlx4")
+
+[node name="BeamTimer" type="Timer" parent="." unique_id=455940100]
+unique_name_in_owner = true
+wait_time = 0.4
+one_shot = true
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

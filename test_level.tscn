@@ -119,6 +119,7 @@ position = Vector2(55, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
 stream = ExtResource("10_lowby")
+volume_db = -68.918
 autoplay = true
 
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
@@ -145,3 +146,6 @@ position = Vector2(-68, 0)
 
 [node name="Point2" type="Marker2D" parent="ShooterEnemy2/PatrolPoints" unique_id=729932257]
 position = Vector2(55, 0)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
+color = Color(0, 0, 0, 1)
