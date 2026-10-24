@@ -306,5 +306,5 @@ func can_wall_slide() -> bool:
 
 func _on_hurtbox_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
-		print("Enemy entered ", body.damage_amount)
-		HealthManager.decrease_health(body.damage_amount)
+		print("Enemy entered ", body.damage)
+		HealthManager.decrease_health(body.damage)

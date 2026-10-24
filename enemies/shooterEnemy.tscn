@@ -111,9 +111,10 @@ script = ExtResource("1_f0a38")
 position = Vector2(0, -38)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pxvb0")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.12661006
+animation = &"attack"
+autoplay = "attack"
+frame = 4
+frame_progress = 0.5589784
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077785109]
 position = Vector2(0, -24)
@@ -129,3 +130,14 @@ position = Vector2(0.99999994, -24)
 scale = Vector2(1.6, 1.6)
 shape = SubResource("CircleShape2D_hc7jm")
 debug_color = Color(0.9918756, 0.3516734, 0.6599248, 0.41960785)
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=634215757]
+position = Vector2(30, -20)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=939808664]
+process_callback = 0
+wait_time = 2.0
+autostart = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

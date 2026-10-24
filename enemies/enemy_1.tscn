@@ -3,6 +3,23 @@
 [ext_resource type="Script" uid="uid://cmtbdw38ncc0d" path="res://enemies/enemy_1.gd" id="1_df7aa"]
 [ext_resource type="Texture2D" uid="uid://k6qmh422wy3p" path="res://enemies/enemySprites/crab-idle.png" id="2_rlllf"]
 [ext_resource type="Texture2D" uid="uid://bw1g8yebbil8u" path="res://enemies/enemySprites/crab-walk.png" id="3_8dj5n"]
+[ext_resource type="Texture2D" uid="uid://bnuvg8yoyfrh" path="res://enemies/enemySprites/crab-attack.png" id="3_fshb8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfsk0"]
+atlas = ExtResource("3_fshb8")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7le3"]
+atlas = ExtResource("3_fshb8")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmlh8"]
+atlas = ExtResource("3_fshb8")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae3tr"]
+atlas = ExtResource("3_fshb8")
+region = Rect2(144, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fshb8"]
 atlas = ExtResource("2_rlllf")
@@ -38,6 +55,23 @@ region = Rect2(144, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pxvb0"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfsk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7le3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmlh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae3tr")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [],
 "loop": 1,
 "name": &"default",
@@ -91,9 +125,9 @@ script = ExtResource("1_df7aa")
 unique_name_in_owner = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_pxvb0")
-animation = &"walk"
+animation = &"attack"
 autoplay = "walk"
-frame_progress = 0.46523666
+frame_progress = 0.57262814
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=697015419]
 position = Vector2(0, -14)
