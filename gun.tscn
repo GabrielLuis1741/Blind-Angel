@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddwb7bbt7oytk" path="res://gun.gd" id="1_vk1bi"]
 [ext_resource type="Texture2D" uid="uid://i4n8d81vn0rn" path="res://Colt M1911.png" id="2_dk5gl"]
+[ext_resource type="AudioStream" uid="uid://doqhjbhn5thyk" path="res://music/beam-fire.mp3" id="3_kw0bs"]
 
 [node name="Gun" type="Node2D" unique_id=1110307846]
 script = ExtResource("1_vk1bi")
@@ -13,3 +14,9 @@ texture = ExtResource("2_dk5gl")
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=607288162]
 position = Vector2(330.0001, -1.4915254)
+
+[node name="BeamSFX" type="AudioStreamPlayer2D" parent="." unique_id=1317948281]
+stream = ExtResource("3_kw0bs")
+volume_db = -6.0
+pitch_scale = 1.51
+attenuation = 1.7411011

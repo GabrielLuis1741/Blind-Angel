@@ -2,7 +2,9 @@ extends Node2D
 
 
 const BEAM = preload("res://light_beam.tscn")
+
 @onready var tip: Marker2D = $Sprite2D/Marker2D
+@onready var beam_sfx = $BeamSFX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -13,6 +15,7 @@ func _process(delta: float) -> void:
 	else:
 		scale.y = 1
 	if Input.is_action_just_pressed("fire"):
+		beam_sfx.play()
 		var bullet_instance = BEAM.instantiate()
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.global_position = tip.global_position
