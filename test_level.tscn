@@ -92,7 +92,7 @@ position = Vector2(-434, -116)
 [node name="Enemies" type="Node2D" parent="." unique_id=89402935]
 
 [node name="Enemy1" parent="Enemies" unique_id=1392990850 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
-position = Vector2(-278, -100)
+position = Vector2(-98, -87)
 patrol_points = NodePath("PatrolPoints")
 
 [node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy1" unique_id=967716358]
@@ -104,7 +104,7 @@ position = Vector2(-68, 0)
 position = Vector2(55, 0)
 
 [node name="Enemy2" parent="Enemies" unique_id=320917039 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
-position = Vector2(-69, -99)
+position = Vector2(136, -178)
 patrol_points = NodePath("PatrolPoints")
 speed = 3000
 wait_time = 1
@@ -117,15 +117,129 @@ position = Vector2(-68, 0)
 [node name="Point2" type="Marker2D" parent="Enemies/Enemy2/PatrolPoints" unique_id=1906566179]
 position = Vector2(55, 0)
 
+[node name="Enemy3" parent="Enemies" unique_id=417949489 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(1141, -453)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy3" unique_id=1761204912]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy3/PatrolPoints" unique_id=1864695101]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy3/PatrolPoints" unique_id=1119215109]
+position = Vector2(55, 0)
+
+[node name="Enemy4" parent="Enemies" unique_id=431208727 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(4036, -540)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy4" unique_id=962507033]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy4/PatrolPoints" unique_id=177842196]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy4/PatrolPoints" unique_id=60042899]
+position = Vector2(55, 0)
+
+[node name="Enemy5" parent="Enemies" unique_id=715585246 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(4293, -556)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy5" unique_id=198685995]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy5/PatrolPoints" unique_id=1886959399]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy5/PatrolPoints" unique_id=688968032]
+position = Vector2(55, 0)
+
+[node name="Enemy6" parent="Enemies" unique_id=1110648639 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(2969, -971)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy6" unique_id=343208]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy6/PatrolPoints" unique_id=106050542]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy6/PatrolPoints" unique_id=727495275]
+position = Vector2(55, 0)
+
+[node name="Enemy7" parent="Enemies" unique_id=1669445517 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(1841, -1646)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy7" unique_id=1699289349]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy7/PatrolPoints" unique_id=73953090]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy7/PatrolPoints" unique_id=737277893]
+position = Vector2(55, 0)
+
+[node name="Enemy8" parent="Enemies" unique_id=2037344578 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(1433, -987)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy8" unique_id=657134110]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy8/PatrolPoints" unique_id=820431946]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy8/PatrolPoints" unique_id=382012975]
+position = Vector2(55, 0)
+
+[node name="Enemy9" parent="Enemies" unique_id=2112207341 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(2125, -983)
+patrol_points = NodePath("PatrolPoints")
+speed = 3000
+wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy9" unique_id=1265965109]
+
+[node name="Point1" type="Marker2D" parent="Enemies/Enemy9/PatrolPoints" unique_id=972788818]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemies/Enemy9/PatrolPoints" unique_id=586630811]
+position = Vector2(55, 0)
+
 [node name="ShooterEnemy" parent="Enemies" unique_id=1139859570 instance=ExtResource("11_58smv")]
-position = Vector2(218, -497)
+position = Vector2(131, -452)
+
+[node name="ShooterEnemy2" parent="Enemies" unique_id=301899949 instance=ExtResource("11_58smv")]
+position = Vector2(954, -678)
+
+[node name="ShooterEnemy3" parent="Enemies" unique_id=1380986198 instance=ExtResource("11_58smv")]
+position = Vector2(1626, -515)
+
+[node name="ShooterEnemy4" parent="Enemies" unique_id=830972913 instance=ExtResource("11_58smv")]
+position = Vector2(2423, -1432)
+
+[node name="ShooterEnemy5" parent="Enemies" unique_id=395868321 instance=ExtResource("11_58smv")]
+position = Vector2(4643, -1457)
+
+[node name="ShooterEnemy6" parent="Enemies" unique_id=426995408 instance=ExtResource("11_58smv")]
+position = Vector2(4322, -971)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
 stream = ExtResource("10_lowby")
-volume_db = -68.918
+volume_db = -80.0
 autoplay = true
 
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
+visible = false
 color = Color(0, 0, 0, 1)
