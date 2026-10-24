@@ -1,17 +1,150 @@
 [gd_scene format=3 uid="uid://ygpdtpq0hq2c"]
 
-[ext_resource type="AudioStream" uid="uid://di2tfd2lfwvs6" path="res://music/Rain flows - 140 bpm.wav" id="11_3xhsb"]
+[ext_resource type="Script" uid="uid://bmfxrodwqmbcf" path="res://game_over.gd" id="1_3u7xm"]
+[ext_resource type="Texture2D" uid="uid://x7utb35tfy5c" path="res://ui/game-over.png" id="1_yxx3c"]
+[ext_resource type="Texture2D" uid="uid://ds4ujr7sip3yc" path="res://ui/feather.png" id="2_ccer4"]
+[ext_resource type="AudioStream" uid="uid://cony0dg7vh7dy" path="res://music/pixel-death.mp3" id="2_woa3c"]
+[ext_resource type="Texture2D" uid="uid://ckuu6wk2lq4po" path="res://ui/retry_normal.png" id="4_woa3c"]
+[ext_resource type="Texture2D" uid="uid://d0eu76dewc1iw" path="res://ui/retry_hover.png" id="5_dd2jf"]
+[ext_resource type="Texture2D" uid="uid://0ti1g3r5uy3r" path="res://ui/quit_normal.png" id="6_ku74v"]
+[ext_resource type="Texture2D" uid="uid://b5osq8m72cvtg" path="res://ui/quit_hover.png" id="7_nm4t2"]
+[ext_resource type="AudioStream" uid="uid://d5xms30ya4vq" path="res://music/button-hover-sfx.mp3" id="8_745m4"]
+[ext_resource type="AudioStream" uid="uid://doqhjbhn5thyk" path="res://music/beam-fire.mp3" id="9_kjrwi"]
 
-[node name="test_level" type="Node2D" unique_id=870854963]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u835"]
+atlas = ExtResource("1_yxx3c")
+region = Rect2(0, 0, 200, 80)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1366837886]
-stream = ExtResource("11_3xhsb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftari"]
+atlas = ExtResource("1_yxx3c")
+region = Rect2(200, 0, 200, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6liy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u835")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftari")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28vn7"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(0, 0, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2vha"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(200, 0, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkf4o"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(400, 0, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u7xm"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(600, 0, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woa3c"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(800, 0, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd2jf"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(1000, 0, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku74v"]
+atlas = ExtResource("2_ccer4")
+region = Rect2(1200, 0, 200, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jalwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28vn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2vha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkf4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u7xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woa3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd2jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku74v")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameOver" type="Node2D" unique_id=1253381983]
+script = ExtResource("1_3u7xm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2002707263]
+stream = ExtResource("2_woa3c")
 autoplay = true
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=809463620]
-offset_left = 507.0
-offset_top = 300.0
-offset_right = 612.0
-offset_bottom = 337.0
-text = "game over :["
-metadata/_edit_group_ = true
+[node name="gameovertxt" type="AnimatedSprite2D" parent="." unique_id=1639380600]
+position = Vector2(548, 119)
+scale = Vector2(1.955, 2.0625)
+sprite_frames = SubResource("SpriteFrames_o6liy")
+autoplay = "default"
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1746407434]
+position = Vector2(559.00006, 319)
+scale = Vector2(2.63, 3)
+sprite_frames = SubResource("SpriteFrames_jalwk")
+autoplay = "default"
+
+[node name="ButtonManager" type="Control" parent="." unique_id=423906693]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Retry" type="TextureButton" parent="ButtonManager" unique_id=1851011381]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 417.0
+offset_top = 378.0
+offset_right = 685.0
+offset_bottom = 485.0
+texture_normal = ExtResource("4_woa3c")
+texture_pressed = ExtResource("5_dd2jf")
+texture_hover = ExtResource("5_dd2jf")
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="ButtonManager" unique_id=283645494]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 480.0
+offset_right = 679.0
+offset_bottom = 583.0
+texture_normal = ExtResource("6_ku74v")
+texture_pressed = ExtResource("7_nm4t2")
+texture_hover = ExtResource("7_nm4t2")
+stretch_mode = 5
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="ButtonManager" unique_id=271211094]
+stream = ExtResource("8_745m4")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="ButtonManager" unique_id=119955386]
+stream = ExtResource("9_kjrwi")
+
+[connection signal="mouse_entered" from="ButtonManager/Retry" to="." method="_on_retry_mouse_entered"]
+[connection signal="pressed" from="ButtonManager/Retry" to="." method="_on_retry_pressed"]
+[connection signal="mouse_entered" from="ButtonManager/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]

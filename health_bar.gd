@@ -25,5 +25,7 @@ func on_player_health_change(player_current_health : int):
 		heart_1.texture = heart1
 	elif player_current_health < 1:
 		heart_1.texture = heart0
+		get_tree().change_scene_to_file("res://game_over.tscn")
+
 		
 		

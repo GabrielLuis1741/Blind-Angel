@@ -97,3 +97,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			enemy_death_effect_instance.global_position = global_position
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
+
+
+func _on_win_spot_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

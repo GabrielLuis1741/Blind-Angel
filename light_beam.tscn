@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://mvrg62k3b25y" path="res://light_beam.gd" id="1_crlx4"]
 [ext_resource type="Texture2D" uid="uid://c4ntllbmyuyyd" path="res://FreeLaserPack/YellowTractorBeam.png" id="1_r5262"]
+[ext_resource type="Script" uid="uid://bdn5oo6wku7g" path="res://point_light_2d.gd" id="3_3x503"]
+[ext_resource type="Texture2D" uid="uid://faux5clnsith" path="res://beam_cones/cone1.png" id="4_mjlfk"]
+[ext_resource type="Texture2D" uid="uid://bxxv3d6amokbc" path="res://beam_cones/cone2.png" id="5_klv4b"]
+[ext_resource type="Texture2D" uid="uid://i6yle0gs1xrj" path="res://beam_cones/cone3.png" id="6_htdwt"]
+[ext_resource type="Texture2D" uid="uid://4irdmrclpw8y" path="res://beam_cones/cone4.png" id="7_823lv"]
+[ext_resource type="Texture2D" uid="uid://w1frmnwgxsnh" path="res://beam_cones/cone5.png" id="8_4s22w"]
+[ext_resource type="Texture2D" uid="uid://ds5o7hvwym4go" path="res://beam_cones/cone6.png" id="9_r1xbb"]
+[ext_resource type="Texture2D" uid="uid://dgdud330qn8q5" path="res://beam_cones/cone7.png" id="10_xj4ej"]
+[ext_resource type="Texture2D" uid="uid://dg6m82oe56g2q" path="res://beam_cones/cone8.png" id="11_msivh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crlx4"]
 atlas = ExtResource("1_r5262")
@@ -92,7 +101,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlllf"]
@@ -132,10 +141,12 @@ shape = SubResource("CapsuleShape2D_rlllf")
 debug_color = Color(0.3254902, 0.9607843, 0.2509804, 0.41960785)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=453906141]
-position = Vector2(165.74997, 3)
-scale = Vector2(12.9761915, 7.8103447)
+position = Vector2(844, 9.094947e-13)
+scale = Vector2(11.886906, 6.943966)
 range_z_max = 0
 texture = SubResource("GradientTexture2D_crlx4")
+script = ExtResource("3_3x503")
+light_frames = Array[Texture2D]([ExtResource("4_mjlfk"), ExtResource("5_klv4b"), ExtResource("6_htdwt"), ExtResource("7_823lv"), ExtResource("8_4s22w"), ExtResource("9_r1xbb"), ExtResource("10_xj4ej"), ExtResource("11_msivh")])
 
 [node name="BeamTimer" type="Timer" parent="." unique_id=455940100]
 unique_name_in_owner = true

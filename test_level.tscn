@@ -252,4 +252,4 @@ autoplay = true
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
-color = Color(0.070447005, 0.049565203, 0.09550699, 1)
+color = Color(0.103940524, 0.07887902, 0.13736004, 1)

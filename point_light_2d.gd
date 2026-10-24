@@ -1,11 +1,15 @@
 extends PointLight2D
 
+@export var light_frames:Array[Texture2D] = []
+@export var fps: float = 7
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var current_frame: float = 0.0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if light_frames.is_empty():
+		return
+	
+	current_frame += fps * delta
+	var frame_index = int(current_frame) % light_frames.size()
+	
+	texture = light_frames[frame_index]

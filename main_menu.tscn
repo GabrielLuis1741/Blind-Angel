@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b73qih63f8hld" path="res://ui/options_hover.png" id="7_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://0ti1g3r5uy3r" path="res://ui/quit_normal.png" id="8_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://b5osq8m72cvtg" path="res://ui/quit_hover.png" id="9_0o4t1"]
+[ext_resource type="AudioStream" uid="uid://d5xms30ya4vq" path="res://music/button-hover-sfx.mp3" id="12_iotk1"]
 [ext_resource type="PackedScene" uid="uid://ct3wm4ptcc352" path="res://fade_transition.tscn" id="12_j5v2v"]
+[ext_resource type="AudioStream" uid="uid://doqhjbhn5thyk" path="res://music/beam-fire.mp3" id="13_w44g7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jix8l"]
 atlas = ExtResource("3_fu7sn")
@@ -62,7 +64,7 @@ position = Vector2(578, 325)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jalwk")
 autoplay = "default"
-frame_progress = 0.6801234
+frame_progress = 0.21303363
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1254639644]
 position = Vector2(827, 122.00001)
@@ -109,12 +111,22 @@ texture_pressed = ExtResource("9_0o4t1")
 texture_hover = ExtResource("9_0o4t1")
 stretch_mode = 5
 
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="ButtonManager" unique_id=178007955]
+stream = ExtResource("12_iotk1")
+autoplay = true
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="ButtonManager" unique_id=886059314]
+stream = ExtResource("13_w44g7")
+
 [node name="FadeTransition" parent="." unique_id=1427511235 instance=ExtResource("12_j5v2v")]
 visible = false
 
 [node name="FadeTime" type="Timer" parent="FadeTransition" unique_id=1286960155]
 
+[connection signal="mouse_entered" from="ButtonManager/Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="ButtonManager/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="pressed" from="ButtonManager/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="ButtonManager/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="FadeTransition/FadeTime" to="." method="_on_fade_time_timeout"]

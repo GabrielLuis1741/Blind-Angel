@@ -29,4 +29,3 @@ func increase_health(health_amount : int):
 
 func die() -> void:
 	emit_signal("died")
-	# take player to game over screen somehow here
