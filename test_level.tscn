@@ -108,7 +108,7 @@ texture = ExtResource("1_4ptq8")
 position = Vector2(-540, -99)
 
 [node name="Player" parent="." unique_id=1470752503 instance=ExtResource("2_f7g2b")]
-position = Vector2(9060, 5915)
+position = Vector2(-411, -233)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=89402935]
 
@@ -264,7 +264,6 @@ stream = ExtResource("12_4bgwg")
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
-visible = false
 color = Color(0.103940524, 0.07887902, 0.13736004, 1)
 
 [node name="Enemy1" parent="." unique_id=1137531727 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
