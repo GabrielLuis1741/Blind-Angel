@@ -1,3 +1,139 @@
 [gd_scene format=3 uid="uid://cpkrc2138nrq2"]
 
+[ext_resource type="Texture2D" uid="uid://dr6yuu757ay56" path="res://ui/opening_scene/pixil-frame-0.png" id="1_03584"]
+[ext_resource type="Script" uid="uid://yer5s41j1qeo" path="res://opening_scene.gd" id="1_irkw0"]
+[ext_resource type="Texture2D" uid="uid://3qf6ocs6wfod" path="res://ui/opening_scene/pixil-frame-1.png" id="2_boq4u"]
+[ext_resource type="Texture2D" uid="uid://bv5reiflvfhn2" path="res://ui/opening_scene/pixil-frame-2.png" id="3_irkw0"]
+[ext_resource type="Texture2D" uid="uid://bt8hql643c8u" path="res://ui/opening_scene/pixil-frame-3.png" id="4_hw364"]
+[ext_resource type="Texture2D" uid="uid://dul540rsw564d" path="res://ui/opening_scene/pixil-frame-4.png" id="5_0lcmu"]
+[ext_resource type="Texture2D" uid="uid://cgmi62mmyjabs" path="res://ui/opening_scene/pixil-frame-5.png" id="6_gwn6d"]
+[ext_resource type="Texture2D" uid="uid://bhotxl36iujre" path="res://ui/opening_scene/pixil-frame-6.png" id="7_3dest"]
+[ext_resource type="Texture2D" uid="uid://cihd0twu1o5y5" path="res://ui/opening_scene/pixil-frame-7.png" id="8_wepl0"]
+[ext_resource type="Texture2D" uid="uid://yibbn3w2k0hw" path="res://ui/opening_scene/pixil-frame-8.png" id="9_xkoff"]
+[ext_resource type="Texture2D" uid="uid://bsi5nbasnusd0" path="res://ui/opening_scene/pixil-frame-9.png" id="10_7v5iq"]
+[ext_resource type="Texture2D" uid="uid://dcrgxbfavy7du" path="res://ui/opening_scene/pixil-frame-10.png" id="11_au362"]
+[ext_resource type="PackedScene" uid="uid://ct3wm4ptcc352" path="res://fade_transition.tscn" id="13_hw364"]
+[ext_resource type="AudioStream" uid="uid://drgt65hvfnrce" path="res://music/hum_sfx.mp3" id="14_hw364"]
+[ext_resource type="Texture2D" uid="uid://bdmu4m7sdxcc" path="res://ui/skip_normal.png" id="15_gwn6d"]
+[ext_resource type="Texture2D" uid="uid://mpcg06o1yglu" path="res://ui/skip_hover.png" id="16_3dest"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jalwk"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_03584")
+}],
+"loop": 0,
+"name": &"first_frame",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_03584")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_boq4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_irkw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hw364")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0lcmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gwn6d")
+}],
+"loop": 0,
+"name": &"scene1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("7_3dest")
+}, {
+"duration": 4.0,
+"texture": ExtResource("7_3dest")
+}],
+"loop": 0,
+"name": &"scene2",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("8_wepl0")
+}, {
+"duration": 5.0,
+"texture": ExtResource("8_wepl0")
+}],
+"loop": 0,
+"name": &"scene3",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("9_xkoff")
+}, {
+"duration": 4.0,
+"texture": ExtResource("9_xkoff")
+}],
+"loop": 0,
+"name": &"scene4",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("10_7v5iq")
+}, {
+"duration": 5.0,
+"texture": ExtResource("10_7v5iq")
+}],
+"loop": 0,
+"name": &"scene5",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("11_au362")
+}, {
+"duration": 10.0,
+"texture": ExtResource("11_au362")
+}],
+"loop": 0,
+"name": &"scene6",
+"speed": 2.0
+}]
+
 [node name="OpeningScene" type="Node2D" unique_id=126897882]
+script = ExtResource("1_irkw0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1596359478]
+position = Vector2(580, 322)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jalwk")
+animation = &"scene4"
+
+[node name="FadeTransition" parent="." unique_id=1427511235 instance=ExtResource("13_hw364")]
+visible = false
+
+[node name="FadeTime" type="Timer" parent="FadeTransition" unique_id=2081994186]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=408697198]
+stream = ExtResource("14_hw364")
+volume_db = 3.0
+autoplay = true
+
+[node name="Skip" type="TextureButton" parent="." unique_id=1171093578]
+offset_left = 1000.0
+offset_top = -12.0
+offset_right = 1200.0
+offset_bottom = 68.0
+texture_normal = ExtResource("15_gwn6d")
+texture_pressed = ExtResource("16_3dest")
+texture_hover = ExtResource("16_3dest")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="FadeTransition/FadeTime" to="." method="_on_fade_time_timeout"]
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
