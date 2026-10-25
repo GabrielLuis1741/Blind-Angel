@@ -8,8 +8,8 @@ func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		HealthManager.take_damage(damage)
+	if body.is_in_group("MainCharacter"):
+		HealthManager.decrease_health(damage)
 		queue_free()
-	elif !body.is_in_group("enemy"):
+	else:
 		queue_free()

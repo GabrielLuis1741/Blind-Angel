@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://di2tfd2lfwvs6" path="res://music/Rain flows - 140 bpm.wav" id="10_lowby"]
 [ext_resource type="PackedScene" uid="uid://yavd4idmtdnn" path="res://enemies/shooterEnemy.tscn" id="11_58smv"]
 [ext_resource type="PackedScene" uid="uid://fguhcigk8tpl" path="res://game_screen.tscn" id="12_a25ih"]
+[ext_resource type="PackedScene" uid="uid://ckn21j0t8yyx0" path="res://final_boss.tscn" id="13_38et7"]
 
 [node name="test_level" type="Node2D" unique_id=870854963]
 
@@ -99,7 +100,7 @@ texture = ExtResource("1_4ptq8")
 position = Vector2(-540, -99)
 
 [node name="Player" parent="." unique_id=1470752503 instance=ExtResource("2_f7g2b")]
-position = Vector2(-434, -116)
+position = Vector2(6556, 5778)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=89402935]
 
@@ -252,4 +253,8 @@ autoplay = true
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
+visible = false
 color = Color(0.103940524, 0.07887902, 0.13736004, 1)
+
+[node name="FinalBoss" parent="." unique_id=1801695575 instance=ExtResource("13_38et7")]
+position = Vector2(6895, 5790)

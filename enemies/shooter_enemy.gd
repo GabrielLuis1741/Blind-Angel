@@ -17,12 +17,12 @@ var damage : int = 1
 var player : Node2D = null
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("Player") as Node2D
+	find_player()
 	shoot_timer.start()
 	# shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
 func _physics_process(delta : float) -> void:
-	var current_player = get_tree().get_first_node_in_group("Player") as Node2D
+	var current_player = get_tree().get_first_node_in_group("MainCharacter") as Node2D
 
 	if current_player:
 		if current_player.global_position.x < global_position.x:
@@ -62,3 +62,13 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			enemy_death_effect_instance.global_position = global_position
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
+
+func find_player():
+	var nodes = get_tree().get_nodes_in_group("MainCharacter")
+	
+	for node in nodes:
+		if node is CharacterBody2D:
+			player = node
+			return
+		else:
+			player = null

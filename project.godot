@@ -35,7 +35,7 @@ import/blender/enabled=false
 [global_group]
 
 Enemy=""
-Player=""
+MainCharacter=""
 
 [input]
 

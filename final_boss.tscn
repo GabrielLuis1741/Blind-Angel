@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://ckn21j0t8yyx0"]
 
+[ext_resource type="Script" uid="uid://b3papa8yeis4h" path="res://final_boss.gd" id="1_qtp6l"]
 [ext_resource type="Texture2D" uid="uid://b1ua4cc413bp4" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Attack 1.png" id="1_rxsrt"]
 [ext_resource type="Texture2D" uid="uid://bsb5bgyq0w3h6" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Attack 2.png" id="2_75bcn"]
+[ext_resource type="Script" uid="uid://bg4syytqx5u01" path="res://boss_idle.gd" id="2_qtp6l"]
 [ext_resource type="Texture2D" uid="uid://w4u5wrwckc52" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Wake Up.png" id="3_tr8hm"]
 [ext_resource type="Texture2D" uid="uid://dacbc16mg0bgo" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Death.png" id="4_qtp6l"]
 [ext_resource type="Texture2D" uid="uid://botptdh6upm87" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Stationary.png" id="5_n5bra"]
 [ext_resource type="Texture2D" uid="uid://iigykugy2yep" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Hurt.png" id="6_nm6v5"]
 [ext_resource type="Texture2D" uid="uid://c57pmgfheh5wh" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Idle.png" id="7_guagd"]
 [ext_resource type="Texture2D" uid="uid://c20u0d0oh0xnd" path="res://final_boss/final_boss_sprites/BloodhoundBoss-Walk.png" id="8_sxp2n"]
+[ext_resource type="Script" uid="uid://bmepodsbxrw31" path="res://state_machine.gd" id="11_nm6v5"]
+[ext_resource type="Script" uid="uid://ltbd24x5ks7m" path="res://BossWalk.gd" id="12_n5bra"]
+[ext_resource type="Script" uid="uid://4fecuhkb6i5q" path="res://boss_attack1.gd" id="13_nm6v5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7ofp"]
 atlas = ExtResource("1_rxsrt")
@@ -675,290 +680,63 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_rxsrt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"dormant"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38et7"]
+radius = 21.0
+height = 80.0
 
-[sub_resource type="Animation" id="Animation_75bcn"]
-resource_name = "attack1"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack1"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jalwk"]
+size = Vector2(100, 87)
 
-[sub_resource type="Animation" id="Animation_tr8hm"]
-resource_name = "attack2"
-length = 0.4545545590013265
-step = 0.09090909
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack2"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_qtp6l"]
-resource_name = "awaken"
-length = 0.3846230912514031
-step = 0.07692308
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"awaken"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
-[sub_resource type="Animation" id="Animation_n5bra"]
-resource_name = "death"
-length = 0.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"death"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_nm6v5"]
-resource_name = "dormant"
-length = 0.8181909334748984
-loop_mode = 1
-step = 0.06666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"dormant"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-
-[sub_resource type="Animation" id="Animation_guagd"]
-resource_name = "hurt"
-length = 3.00005
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hurt"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_sxp2n"]
-resource_name = "idle"
-length = 1.000020014901459
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_e7ofp"]
-resource_name = "walk"
-length = 0.4
-loop_mode = 1
-step = 0.06666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lerk7"]
-_data = {
-&"RESET": SubResource("Animation_rxsrt"),
-&"attack1": SubResource("Animation_75bcn"),
-&"attack2": SubResource("Animation_tr8hm"),
-&"awaken": SubResource("Animation_qtp6l"),
-&"death": SubResource("Animation_n5bra"),
-&"dormant": SubResource("Animation_nm6v5"),
-&"hurt": SubResource("Animation_guagd"),
-&"idle": SubResource("Animation_sxp2n"),
-&"walk": SubResource("Animation_e7ofp")
-}
+[sub_resource type="CircleShape2D" id="CircleShape2D_jalwk"]
+radius = 41.725292
 
 [node name="FinalBoss" type="CharacterBody2D" unique_id=1801695575]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1926298714]
+script = ExtResource("1_qtp6l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285024214]
 sprite_frames = SubResource("SpriteFrames_jalwk")
-animation = &"dormant"
-frame = 5
+animation = &"attack1"
+speed_scale = 2.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1545285551]
-root_node = NodePath("../AnimatedSprite2D")
-libraries/ = SubResource("AnimationLibrary_lerk7")
-autoplay = &"dormant"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1926298714]
+position = Vector2(1, 26)
+shape = SubResource("CapsuleShape2D_38et7")
+
+[node name="AttackBox" type="Area2D" parent="." unique_id=1902282013]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=704206961]
+position = Vector2(2, 23)
+shape = SubResource("RectangleShape2D_jalwk")
+debug_color = Color(0.86886793, 0.29351503, 0.5085351, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1237095361]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=63231431]
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_jalwk")
+debug_color = Color(0.5342723, 0.56348354, 0.24769118, 0.41960785)
+
+[node name="State" type="Node" parent="." unique_id=1334584862]
+
+[node name="StateMachine" type="Node" parent="." unique_id=989341298 node_paths=PackedStringArray("initial_state") groups=["Enemy"]]
+script = ExtResource("11_nm6v5")
+initial_state = NodePath("BossWalk")
+
+[node name="BossIdle" type="Node2D" parent="StateMachine" unique_id=1153142145 node_paths=PackedStringArray("final_boss")]
+script = ExtResource("2_qtp6l")
+final_boss = NodePath("../..")
+metadata/_custom_type_script = "uid://bg4syytqx5u01"
+
+[node name="BossWalk" type="Node2D" parent="StateMachine" unique_id=405638483 node_paths=PackedStringArray("final_boss")]
+script = ExtResource("12_n5bra")
+final_boss = NodePath("../..")
+metadata/_custom_type_script = "uid://ltbd24x5ks7m"
+
+[node name="BossAttack1" type="Node2D" parent="StateMachine" unique_id=1562885150]
+script = ExtResource("13_nm6v5")
+metadata/_custom_type_script = "uid://4fecuhkb6i5q"
+
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

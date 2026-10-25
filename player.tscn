@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://blhajr5x6fttd" path="res://angel sprites/angel_wall_slide.png" id="7_n7ghd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b26j0"]
-load_path = "res://.godot/imported/delete.png-7b140c9bfff0c7372a53a38392d4a149.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oybyf"]
 atlas = SubResource("CompressedTexture2D_b26j0")
@@ -381,9 +380,9 @@ height = 34.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxvb0"]
 
-[node name="Player" type="Node2D" unique_id=1470752503 groups=["Player"]]
+[node name="Player" type="Node2D" unique_id=1470752503]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=666280737]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=666280737 groups=["MainCharacter"]]
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=484632594]
