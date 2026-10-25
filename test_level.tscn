@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://di2tfd2lfwvs6" path="res://music/Rain flows - 140 bpm.wav" id="10_lowby"]
 [ext_resource type="PackedScene" uid="uid://yavd4idmtdnn" path="res://enemies/shooterEnemy.tscn" id="11_58smv"]
 [ext_resource type="PackedScene" uid="uid://fguhcigk8tpl" path="res://game_screen.tscn" id="12_a25ih"]
-[ext_resource type="PackedScene" uid="uid://ckn21j0t8yyx0" path="res://final_boss.tscn" id="13_38et7"]
 
 [node name="test_level" type="Node2D" unique_id=870854963]
 
@@ -100,7 +99,7 @@ texture = ExtResource("1_4ptq8")
 position = Vector2(-540, -99)
 
 [node name="Player" parent="." unique_id=1470752503 instance=ExtResource("2_f7g2b")]
-position = Vector2(6556, 5778)
+position = Vector2(-424, -173)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=89402935]
 
@@ -232,7 +231,7 @@ position = Vector2(55, 0)
 position = Vector2(131, -452)
 
 [node name="ShooterEnemy2" parent="Enemies" unique_id=301899949 instance=ExtResource("11_58smv")]
-position = Vector2(954, -678)
+position = Vector2(185, -1276)
 
 [node name="ShooterEnemy3" parent="Enemies" unique_id=1380986198 instance=ExtResource("11_58smv")]
 position = Vector2(1626, -515)
@@ -256,5 +255,26 @@ autoplay = true
 visible = false
 color = Color(0.103940524, 0.07887902, 0.13736004, 1)
 
-[node name="FinalBoss" parent="." unique_id=1801695575 instance=ExtResource("13_38et7")]
-position = Vector2(6895, 5790)
+[node name="Enemy1" parent="." unique_id=1137531727 instance=ExtResource("3_f7g2b")]
+position = Vector2(7460, 5797)
+
+[node name="Enemy2" parent="." unique_id=2027446580 instance=ExtResource("3_f7g2b")]
+position = Vector2(8405, 5913)
+
+[node name="Enemy3" parent="." unique_id=705985397 instance=ExtResource("3_f7g2b")]
+position = Vector2(6576, 5766)
+
+[node name="Enemy4" parent="." unique_id=409945280 instance=ExtResource("3_f7g2b")]
+position = Vector2(7142, 5756)
+
+[node name="ShooterEnemy" parent="." unique_id=483592151 instance=ExtResource("11_58smv")]
+position = Vector2(6874, 5781)
+
+[node name="ShooterEnemy2" parent="." unique_id=1330328887 instance=ExtResource("11_58smv")]
+position = Vector2(8137, 5579)
+
+[node name="ShooterEnemy3" parent="." unique_id=1310065843 instance=ExtResource("11_58smv")]
+position = Vector2(8739, 5225)
+
+[node name="Enemy5" parent="." unique_id=1626378110 instance=ExtResource("3_f7g2b")]
+position = Vector2(7834, 5928)
