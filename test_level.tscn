@@ -11,7 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://ta3f0f5hi5dj" path="res://Lab Asset Pack/2 Background/Night/6.png" id="6_58smv"]
 [ext_resource type="AudioStream" uid="uid://di2tfd2lfwvs6" path="res://music/Rain flows - 140 bpm.wav" id="10_lowby"]
 [ext_resource type="PackedScene" uid="uid://yavd4idmtdnn" path="res://enemies/shooterEnemy.tscn" id="11_58smv"]
+[ext_resource type="AudioStream" uid="uid://bjawmlecxklw6" path="res://music/Trap and boss - 133 bpm.wav" id="12_4bgwg"]
 [ext_resource type="PackedScene" uid="uid://fguhcigk8tpl" path="res://game_screen.tscn" id="12_a25ih"]
+[ext_resource type="Script" uid="uid://cdo8fxojecy3u" path="res://area_2d.gd" id="13_38et7"]
+[ext_resource type="Script" uid="uid://ctgg1bjfvredh" path="res://area_2d_2.gd" id="15_2hfll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jalwk"]
+size = Vector2(360.75, 223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6liy"]
+size = Vector2(3591.5, 4183.75)
 
 [node name="test_level" type="Node2D" unique_id=870854963]
 
@@ -99,7 +108,7 @@ texture = ExtResource("1_4ptq8")
 position = Vector2(-540, -99)
 
 [node name="Player" parent="." unique_id=1470752503 instance=ExtResource("2_f7g2b")]
-position = Vector2(-424, -173)
+position = Vector2(9060, 5915)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=89402935]
 
@@ -249,23 +258,62 @@ position = Vector2(4322, -971)
 stream = ExtResource("10_lowby")
 autoplay = true
 
+[node name="BossMusic" type="AudioStreamPlayer" parent="." unique_id=1115072673]
+stream = ExtResource("12_4bgwg")
+
 [node name="GameScreen" parent="." unique_id=579995274 instance=ExtResource("12_a25ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=828319782]
 visible = false
 color = Color(0.103940524, 0.07887902, 0.13736004, 1)
 
-[node name="Enemy1" parent="." unique_id=1137531727 instance=ExtResource("3_f7g2b")]
+[node name="Enemy1" parent="." unique_id=1137531727 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(7460, 5797)
+patrol_points = NodePath("PatrolPoints")
 
-[node name="Enemy2" parent="." unique_id=2027446580 instance=ExtResource("3_f7g2b")]
+[node name="PatrolPoints" type="Node2D" parent="Enemy1" unique_id=1105765386]
+
+[node name="Point1" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=55162974]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy1/PatrolPoints" unique_id=1736479191]
+position = Vector2(55, 0)
+
+[node name="Enemy2" parent="." unique_id=2027446580 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(8405, 5913)
+patrol_points = NodePath("PatrolPoints")
 
-[node name="Enemy3" parent="." unique_id=705985397 instance=ExtResource("3_f7g2b")]
+[node name="PatrolPoints" type="Node2D" parent="Enemy2" unique_id=973716611]
+
+[node name="Point1" type="Marker2D" parent="Enemy2/PatrolPoints" unique_id=1787361133]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy2/PatrolPoints" unique_id=1571203558]
+position = Vector2(55, 0)
+
+[node name="Enemy3" parent="." unique_id=705985397 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(6576, 5766)
+patrol_points = NodePath("PatrolPoints")
 
-[node name="Enemy4" parent="." unique_id=409945280 instance=ExtResource("3_f7g2b")]
+[node name="PatrolPoints" type="Node2D" parent="Enemy3" unique_id=1578813571]
+
+[node name="Point1" type="Marker2D" parent="Enemy3/PatrolPoints" unique_id=1097272804]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy3/PatrolPoints" unique_id=853032970]
+position = Vector2(55, 0)
+
+[node name="Enemy4" parent="." unique_id=409945280 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(7142, 5756)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy4" unique_id=1050982012]
+
+[node name="Point1" type="Marker2D" parent="Enemy4/PatrolPoints" unique_id=578697542]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy4/PatrolPoints" unique_id=672532483]
+position = Vector2(55, 0)
 
 [node name="ShooterEnemy" parent="." unique_id=483592151 instance=ExtResource("11_58smv")]
 position = Vector2(6874, 5781)
@@ -273,8 +321,67 @@ position = Vector2(6874, 5781)
 [node name="ShooterEnemy2" parent="." unique_id=1330328887 instance=ExtResource("11_58smv")]
 position = Vector2(8137, 5579)
 
+[node name="ShooterEnemy4" parent="." unique_id=1199420807 instance=ExtResource("11_58smv")]
+position = Vector2(7640, 5015)
+
 [node name="ShooterEnemy3" parent="." unique_id=1310065843 instance=ExtResource("11_58smv")]
 position = Vector2(8739, 5225)
 
-[node name="Enemy5" parent="." unique_id=1626378110 instance=ExtResource("3_f7g2b")]
+[node name="Enemy5" parent="." unique_id=1626378110 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
 position = Vector2(7834, 5928)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy5" unique_id=1613521385]
+
+[node name="Point1" type="Marker2D" parent="Enemy5/PatrolPoints" unique_id=1071802596]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy5/PatrolPoints" unique_id=419243941]
+position = Vector2(55, 0)
+
+[node name="Enemy6" parent="." unique_id=1411281670 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(7600, 5920)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy6" unique_id=271982679]
+
+[node name="Point1" type="Marker2D" parent="Enemy6/PatrolPoints" unique_id=946322159]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy6/PatrolPoints" unique_id=38998667]
+position = Vector2(55, 0)
+
+[node name="Enemy7" parent="." unique_id=1708134210 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_f7g2b")]
+position = Vector2(7249, 5435)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy7" unique_id=826965968]
+
+[node name="Point1" type="Marker2D" parent="Enemy7/PatrolPoints" unique_id=1457726350]
+position = Vector2(-68, 0)
+
+[node name="Point2" type="Marker2D" parent="Enemy7/PatrolPoints" unique_id=211841362]
+position = Vector2(55, 0)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1682370819]
+visible = false
+position = Vector2(9161, 5831)
+script = ExtResource("13_38et7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1508055143]
+position = Vector2(432, 24)
+shape = SubResource("RectangleShape2D_jalwk")
+debug_color = Color(0.9226104, 0.111771874, 0.6268095, 0.41960785)
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=2019645880]
+visible = false
+position = Vector2(7477, 4508)
+script = ExtResource("15_2hfll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=2032232133]
+position = Vector2(436.25, 828)
+shape = SubResource("RectangleShape2D_o6liy")
+debug_color = Color(0.42557597, 0.5915829, 0.33876017, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]

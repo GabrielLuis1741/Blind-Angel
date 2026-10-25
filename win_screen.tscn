@@ -1,3 +1,47 @@
 [gd_scene format=3 uid="uid://co3fi6yshou0v"]
 
+[ext_resource type="Texture2D" uid="uid://0ti1g3r5uy3r" path="res://ui/quit_normal.png" id="1_26557"]
+[ext_resource type="Script" uid="uid://dxeumwplfvi64" path="res://win_screen.gd" id="1_luvg0"]
+[ext_resource type="Texture2D" uid="uid://b5osq8m72cvtg" path="res://ui/quit_hover.png" id="2_luvg0"]
+[ext_resource type="AudioStream" uid="uid://d5xms30ya4vq" path="res://music/button-hover-sfx.mp3" id="3_5hoe6"]
+[ext_resource type="AudioStream" uid="uid://doqhjbhn5thyk" path="res://music/beam-fire.mp3" id="4_g6jvr"]
+[ext_resource type="Texture2D" uid="uid://caao0i2rc5epy" path="res://ui/opening_scene/win.png" id="5_4kgk1"]
+[ext_resource type="AudioStream" uid="uid://cge05p2bfmol3" path="res://music/Finally Happy - 128 bpm.wav" id="7_5hoe6"]
+
 [node name="WinScreen" type="Node2D" unique_id=821507537]
+script = ExtResource("1_luvg0")
+
+[node name="ButtonManager" type="Control" parent="." unique_id=462197285]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quit" type="TextureButton" parent="ButtonManager" unique_id=528787118]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 418.0
+offset_right = 683.0
+offset_bottom = 521.0
+texture_normal = ExtResource("1_26557")
+texture_pressed = ExtResource("2_luvg0")
+texture_hover = ExtResource("2_luvg0")
+stretch_mode = 5
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="ButtonManager" unique_id=828666948]
+stream = ExtResource("3_5hoe6")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="ButtonManager" unique_id=1573316521]
+stream = ExtResource("4_g6jvr")
+
+[node name="Win" type="Sprite2D" parent="." unique_id=1236804807]
+position = Vector2(557.00006, 252)
+scale = Vector2(2.1, 2.375)
+texture = ExtResource("5_4kgk1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2090189764]
+stream = ExtResource("7_5hoe6")
+volume_db = -3.03
+autoplay = true
+
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
