@@ -33,13 +33,12 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 
 
-func _on_attack_box_body_entered(body: Node2D) -> void:
-	deal_attack_damage()
+#func _on_attack_box_body_entered(body: Node2D) -> void:
+#	deal_attack_damage()
 		
-func deal_attack_damage():
-	for body in attack_box.get_overlapping_bodies():
-		if body.is_in_group("MainCharacter"):
-			HealthManager.decrease_health(damage)
+#func deal_attack_damage():
+#	for body in attack_box.get_overlapping_bodies():
+##			HealthManager.decrease_health(damage)
 			
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if hurt_box.get_parent().has_method("get_damage_amount"):

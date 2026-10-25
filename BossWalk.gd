@@ -28,6 +28,9 @@ func Physics_Update(delta: float):
 	
 	if direction.length() > 200:
 		Transitioned.emit(self, "idle")
+	
+	elif direction.length() < 70:
+		Transitioned.emit(self, "attack1")
 
 func find_player():
 	var nodes = get_tree().get_nodes_in_group("MainCharacter")

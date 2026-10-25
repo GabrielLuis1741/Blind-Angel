@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://s2axdkr3ry47"]
 
 [ext_resource type="Script" uid="uid://ddwb7bbt7oytk" path="res://gun.gd" id="1_vk1bi"]
-[ext_resource type="Texture2D" uid="uid://i4n8d81vn0rn" path="res://Colt M1911.png" id="2_dk5gl"]
 [ext_resource type="AudioStream" uid="uid://doqhjbhn5thyk" path="res://music/beam-fire.mp3" id="3_kw0bs"]
 
 [node name="Gun" type="Node2D" unique_id=1110307846]
@@ -10,7 +9,6 @@ script = ExtResource("1_vk1bi")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=337047189]
 position = Vector2(1, 1)
 scale = Vector2(0.49999988, 0.67045456)
-texture = ExtResource("2_dk5gl")
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=607288162]
 position = Vector2(330.0001, -1.4915254)

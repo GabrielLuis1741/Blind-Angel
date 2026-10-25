@@ -13,6 +13,7 @@ func Enter():
 	print("Entered Boss Attack 1 state")
 	find_player()
 	
+	
 func Physics_Update(delta: float):
 	find_player()
 	
@@ -22,9 +23,6 @@ func Physics_Update(delta: float):
 		
 	var direction = player.global_position - final_boss.global_position
 	
-	if direction.length() > 30:
-		Transitioned.emit(self, "walk")
-		return
 		
 	final_boss.velocity = Vector2.ZERO
 	 
@@ -38,6 +36,14 @@ func Physics_Update(delta: float):
 		elif animated_sprite_2d.frame != 8:
 			has_dealt_damage = false 
 			
+	if direction.length() > 30:
+		Transitioned.emit(self, "walk")
+		return
+	else: 
+		start_attack()
+		
+	
+	
 func find_player():
 	var nodes = get_tree().get_nodes_in_group("MainCharacter")
 	print("Nodes found in 'MainCharacter' group: ", nodes)
@@ -48,3 +54,9 @@ func find_player():
 			return
 		else:
 			player = null
+
+func start_attack():
+	has_dealt_damage = false
+	if player:
+		animated_sprite_2d.flip_h = player.global_position.x < final_boss.global_position.x
+	animated_sprite_2d.play("attack1")
